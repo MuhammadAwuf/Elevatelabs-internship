@@ -1,0 +1,33 @@
+This is the python code I have made to do Exploratory Data Analysis Process
+
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+df=pd.read_csv(r"C:\Users\ASUS\Python project\Cleaned_Titanic.csv")
+sns.set_theme(style='whitegrid')
+plt.style.use('ggplot')
+print(df.shape)
+print(df.info)
+print(df.describe)
+print(df.isnull().sum())
+print(df.head())
+sns.countplot(data=df, x='Survived')
+plt.title("Survival Count")
+plt.xlabel("Survived (0 = No, 1 = Yes)")
+plt.ylabel("Count")
+plt.show()
+sns.countplot(data=df, x='Sex', hue='Survived')
+plt.title("Survival by Gender")
+plt.show()
+sns.countplot(data=df, x='Pclass', hue='Survived')
+plt.title("Survival by Passenger Class")
+plt.show()
+sns.violinplot(data=df, x='Survived', y='Age', inner='quartile')
+plt.title("Age Distribution by Survival")
+plt.show()
+plt.figure(figsize=(10,6))
+sns.heatmap(df.corr(), annot=True, cmap='coolwarm', fmt=".2f")
+plt.title("Correlation Heatmap")
+plt.show()
